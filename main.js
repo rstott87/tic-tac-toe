@@ -2,6 +2,8 @@
 const playerTurnMessage = document.getElementById("playerTurn");
 const boardContainer = document.querySelector("#gameboardContainer");
 const winnerDeclared = document.getElementById("winnerDeclared")
+
+//function that creates game board. uses a simple loop to create 9 divs in grid form as board pieces. 
 const Gameboard = (function (){
     let board = []
         
@@ -15,6 +17,7 @@ const Gameboard = (function (){
     return {board}
 })();
 
+// each of these arrays hold the combination of board pieces that results in someone winning 
 
 const winningArray1 = [];
 const winningArray2 = [];
@@ -28,8 +31,11 @@ const winningArray8 = [];
 let winningArrays = [winningArray1, winningArray2, winningArray3, winningArray4, winningArray5, winningArray6, winningArray7, winningArray8]
 
 
+
 const renderedBoardPiece = document.querySelectorAll('.boardPiece');
 
+
+//creates the specific 'combinations' for winning arrays
 const createWinningArrays = (() => {
     for (let i = 0; i < 9; i++) {
         if (i <= 2){
@@ -55,7 +61,7 @@ const createWinningArrays = (() => {
 
 let xTurn = true;
 
-
+//adds event listeners to each piece 
 renderedBoardPiece.forEach((n) =>  {
     n.addEventListener('click', () => {
         if (xTurn && n.innerHTML == ''){
@@ -73,7 +79,7 @@ renderedBoardPiece.forEach((n) =>  {
     }); 
 }); 
 
-
+//checks X for winner 
 const checkXForWinner = (array) => {
     for (let i = 0; i < 3; i ++) {
         if (array[i].innerHTML == "X") {
@@ -89,6 +95,7 @@ const checkXForWinner = (array) => {
         })
     };
 
+//checks O for winner     
 const checkOForWinner = (array) => {
     for (let i = 0; i < 3; i ++) {
         if (array[i].innerHTML == "O") {
