@@ -13,3 +13,6 @@
     font-family: 'Courier New', Courier, monospace;
 }
 
+#playerTurn, #winnerDeclared {
+    font-size: 100px;
+}
